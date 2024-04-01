@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package post;
+
+option go_package = "/";
+
+service PostService {
+    rpc Create(Post) returns (Post);
+    rpc Update(Post) returns (Post);
+    rpc Delete(GetRequest) returns (checkResponse);
+    rpc GetPost(GetRequest) returns (PostResponse); 
+    rpc GetAllPosts(GetAllPostsRequest) returns (GetPostsByOwnerIdResponse);
+    rpc GetPostsByOwnerId(GetPostsByOwnerIdRequest) returns (GetPostsByOwnerIdResponse);
+}
+
+message GetAllPostsRequest {
+    int64 page = 1;
+    int64 limit = 2;
+}
+
+message checkResponse {
+    bool chack = 1;
+}
+
+message GetPostsByOwnerIdRequest {
+    string owner_id = 1;
+}
+
+message GetPostsByOwnerIdResponse {
+    repeated Post posts = 1;
+}
+
+message GetRequest {
+    string post_id = 1;
+}
+
+message Owner {
+    string id = 1;
+    string name = 2;
+    string last_name = 3;
+    string username = 4;
+    string email = 5;
+    string bio = 6;
+    string website = 7;
+    string password = 8;
+    string refresh_token = 9;
+    string created_at = 10;
+    string updated_at = 11;
+}
+
+message PostWithCommnets {
+    string id = 1;
+    string content = 2;
+    string title = 3;
+    int64 likes = 4;
+    int64 dislikes = 5;
+    int64 views = 6;
+    string category = 7;
+    string owner_id = 8;
+    string created_at = 10;
+    string updated_at = 11;
+    repeated Comment all_comments = 12;
+}
+
+// CREATE TABLE posts (
+//     id UUID NOT NULL,
+//     owner_id UUID NOT NULL,
+//     content TEXT NOT NULL,
+//     title TEXT NOT NULL,
+//     likes INT,
+//     dislikes INT,
+//     views INT, 
+//     category VARCHAR(100),
+//     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+//     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+//     deleted_at TIMESTAMP NULL
+// );
+
+message Post {
+    string id = 1;
+    string content = 2;
+    string title = 3;
+    int64 likes = 4;
+    int64 dislikes = 5;
+    int64 views = 6;
+    string category = 7;
+    string owner_id = 8;
+    string created_at = 10;
+    string updated_at = 11;
+}
+
+message PostResponse {
+    string id = 1;
+    string content = 2;
+    string title = 3;
+    int64 likes = 4;
+    int64 dislikes = 5;
+    int64 views = 6;
+    string category = 7;
+    string owner_id = 8;
+    string created_at = 10;
+    string updated_at = 11;
+    Owner owner = 12;
+    repeated Comment all_comments = 13;
+}
+
+message Comment {
+    string id = 1;
+    string content = 2;
+    string createdAt = 3;
+    string updatedAt = 4;
+    string deletedAt = 5;
+    string post_id = 6;
+    string owner_id = 7;
+}

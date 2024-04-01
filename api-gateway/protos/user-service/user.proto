@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/";
+
+service UserService {
+  rpc Create(User) returns (User);
+  rpc Update(User) returns (User);
+  rpc Delete(UserRequest) returns (CheckUniquesResponse);
+  rpc Get(UserRequest) returns (User);
+  rpc GetAll(GetAllUsersRequest) returns (GetAllUsersResponse);
+  rpc CheckUniques(CheckUniquesRequest) returns (CheckUniquesResponse);
+  rpc GetUserByEmail(ByEmail) returns (User); 
+  rpc GetUserByRefreshToken(RefreshToken) returns (User);
+}
+
+message RefreshToken {
+  string token = 1;
+}
+
+message ByEmail {
+  string email = 1;
+}
+
+message CheckUniquesRequest {
+  string field = 1;
+  string value = 2;
+}
+
+message CheckUniquesResponse {
+  bool check = 1;
+}
+
+message Comment {
+  string id = 1;
+  string content = 2;
+  string createdAt = 3;
+  string updatedAt = 4;
+  string deletedAt = 5;
+  string post_id = 6;
+  string owner_id = 7;
+}
+
+message Post {
+  string id = 1;
+  string title = 2;
+  string image_url = 3;
+  repeated Comment all_comments = 4;
+}
+
+message GetAllUsersRequest {
+  int64 page = 1;
+  int64 limit = 2;
+}
+
+message GetAllUsersResponse {
+  repeated User allUsers = 1;
+}
+
+message UserRequest {
+  string userId = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string last_name = 3;
+  string username = 4;
+  string email = 5;
+  string bio = 6;
+  string website = 7;
+  string password = 8;
+  string refresh_token = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  repeated Post posts = 12;
+}

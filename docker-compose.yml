@@ -1,0 +1,92 @@
+
+services:
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: asadbek
+      PGDATA: /data/postgres
+      POSTGRES_DB: examdb
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5332:5332"
+    networks:
+      - db
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  user_service:
+    container_name: user_service
+    build: ./test_service
+    depends_on:
+      - "mongodb"
+    ports:
+      - "5050:5050"
+    networks:
+      - db
+
+  post_service:
+    container_name: post_service
+    build: ./post_service
+    depends_on:
+      - "mongodb"
+    ports:
+      - "8080:8080"
+    networks:
+      - db
+
+  mongodb:
+    image: bitnami/mongodb:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27018:27018"
+    networks:
+      - db
+
+  redisdb:
+    container_name: redisdb
+    image:  redis
+    ports:
+      - "6378:6378"
+    networks:
+      - db
+
+  api:
+    container_name: api-gateway
+    build: ./api-test
+    depends_on:
+      -  "redisdb"
+      -  "user_service"
+    ports:
+      - "1212:1212"
+    networks:
+      - db
+
+  migrate:
+    image: migrate/migrate
+    networks:
+      - db
+    volumes:
+      - ./migrations:/migrations
+    command: -path /migrations -database postgres://postgres:123@db:5432/userdb?sslmode=disable -verbose up
+    links:
+      - db
+    depends_on:
+      - db
+
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
+
+
