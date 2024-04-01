@@ -27,7 +27,6 @@ type Option struct {
 // @Title Welcome to swagger service
 // @Version 1.0
 // @Description you can use this as social network
-// @Host localhost:8080
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization

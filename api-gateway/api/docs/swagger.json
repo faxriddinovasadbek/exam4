@@ -6,7 +6,6 @@
         "contact": {},
         "version": "1.0"
     },
-    "host": "localhost:8080",
     "paths": {
         "/v1/all": {
             "get": {
@@ -435,7 +434,7 @@
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Api for getting comment by id",
+                "description": "Api for getting comment by body",
                 "consumes": [
                     "application/json"
                 ],

@@ -34,24 +34,24 @@ func Load() Config {
 
 	c.Environment = cast.ToString(getOrReturnDefault("ENVIRONMENT", "develop"))
 
-	c.PostgresHost = cast.ToString(getOrReturnDefault("POSTGRES_HOST", "localhost"))
+	c.PostgresHost = cast.ToString(getOrReturnDefault("POSTGRES_HOST", "db"))
 	c.PostgresPort = cast.ToInt(getOrReturnDefault("POSTGRES_PORT", 5432))
 	c.PostgresDatabase = cast.ToString(getOrReturnDefault("POSTGRES_DATABASE", "examdb"))
 	c.PostgresUser = cast.ToString(getOrReturnDefault("POSTGRES_USER", "postgres"))
 	c.PostgresPassword = cast.ToString(getOrReturnDefault("POSTGRES_PASSWORD", "asadbek"))
 
 	// mongo
-	c.MongoHost = cast.ToString(getOrReturnDefault("MONGODB_HOST", "localhost"))
+	c.MongoHost = cast.ToString(getOrReturnDefault("MONGODB_HOST", "mongodb"))
 	c.MongoPort = cast.ToInt(getOrReturnDefault("MONGODB_PORT", 27017))
 	c.MongoDatabase = cast.ToString(getOrReturnDefault("MONGO_DATABASE", "examdb"))
 
 
 	// connect to post-service
-	c.PostServiceHost = cast.ToString(getOrReturnDefault("POST_SERVICE_HOST", "localhost"))
+	c.PostServiceHost = cast.ToString(getOrReturnDefault("POST_SERVICE_HOST", "post-service"))
 	c.PostServicePort = cast.ToInt(getOrReturnDefault("POST_SERVICE_HOST", "2222"))
 
 	// connect to comment-service
-	c.CommentServiceHost = cast.ToString(getOrReturnDefault("COMMENT_SERVICE_HOST", "localhost"))
+	c.CommentServiceHost = cast.ToString(getOrReturnDefault("COMMENT_SERVICE_HOST", "comment-service"))
 	c.CommentServicePort = cast.ToInt(getOrReturnDefault("COMMENT_SERVICE_PORT", "3333"))
 
 	c.LogLevel = cast.ToString(getOrReturnDefault("LOG_LEVEL", "debug"))

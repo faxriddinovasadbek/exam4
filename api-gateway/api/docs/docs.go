@@ -442,7 +442,7 @@ const docTemplate = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Api for getting comment by id",
+                "description": "Api for getting comment by body",
                 "consumes": [
                     "application/json"
                 ],
@@ -1521,7 +1521,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8080",
+	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "Welcome to swagger service",
