@@ -23,10 +23,9 @@ VALUES
   ('6022e5d2-d93a-44b8-a8a8-21f1cbb71d52', 'Excepteur sint occaecat', 'ade86809-1728-4204-8ea2-49ee0e50bbed', 'a2bc1301-27bc-4d7d-9b11-580f47292fb0'),
   ('e69fb9a4-81d5-48aa-b50c-6c93e8ee459b', 'Lorem ipsum dolor', '330f5d39-2b8b-4657-98ad-3950d2064e71', '09303f4d-45e9-45ed-8bae-361e483db770'),
   ('e475bbca-9b48-46f4-a5dd-92719a1d27cb', 'Sed do eiusmod', '32096fac-a0c9-4e4b-8d9f-cd872cdf5d8b', '2f1031d6-1412-4bf0-95fb-eabaf878aef1'),
-  ('87ec42d3-94d9-4779-9e4b-0da1d220e108', 'Ut enim ad', '5388968d-e45f-44f7-9acd-590ccda53691', '94e55a1a-17b9-46ef-9ef4-68b9a4b28980 '),
+  ('87ec42d3-94d9-4779-9e4b-0da1d220e108', 'Ut enim ad', '5388968d-e45f-44f7-9acd-590ccda53691', '94e55a1a-17b9-46ef-9ef4-68b9a4b28980'),
   ('e89cda39-b55b-4e63-868e-76b97c331da7', 'Duis aute irure', '2c1f96e0-4c3d-4169-9f6d-050e5cf45dd0', 'bb9e0115-67f1-48d6-aef0-18725be78c14'),
   ('1314c774-6884-47e3-b2a1-8a06b875da2d', 'Excepteur sint occaecat', '5119ced3-3862-49e2-8400-f1a4001e51b5', '9414b8fe-f86b-4d91-9d2b-4be299a6f723');
-
 
 
 
